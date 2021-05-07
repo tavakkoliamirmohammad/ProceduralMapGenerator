@@ -5,9 +5,9 @@
 
 class HexagonTexture {
 public:
-    HexagonTexture(const string& path);
+    explicit HexagonTexture(const string& path);
 
-    GLuint getTextureId();
+    GLuint getTextureId() const;
 
 private:
     GLuint textureId_;
