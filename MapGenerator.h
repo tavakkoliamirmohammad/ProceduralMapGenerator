@@ -7,11 +7,13 @@ using namespace std;
 
 class MapGenerator {
 public:
-    MapGenerator(int size);
+    explicit MapGenerator(int size);
 
     void generate();
 
     double **getMap();
+
+    void renderMap();
 
     ~MapGenerator();
 

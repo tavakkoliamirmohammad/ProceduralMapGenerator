@@ -9,13 +9,13 @@ public:
 
     void _on_start();
 
-    void _on_end();
-
     void diamondStep(int, int);
 
     void squareStep(int, int);
 
     double dRand(double dMin, double dMax);
+
+    void renderMap();
 
 private:
     double random_range;

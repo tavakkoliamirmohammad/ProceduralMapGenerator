@@ -1,17 +1,20 @@
 #include <iostream>
 #include "OpenGLRenderer.h"
 #include "GL/glut.h"
+#include "MapGenerator.h"
+#include <cmath>
+
+using namespace std;
 
 void render() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glBegin(GL_POLYGON);
-    glColor3f(1, 0, 0); glVertex3f(-0.6, -0.75, 0.5);
-    glColor3f(0, 1, 0); glVertex3f(0.6, -0.75, 0);
-    glColor3f(0, 0, 1); glVertex3f(0, 0.75, 0);
-    glEnd();
-
-    // Flush drawing command buffer to make drawing happen as soon as possible.
+    int n = 8;
+    int size = pow(2, n) + 1;
+    auto mapGenerator = MapGenerator(size);
+    mapGenerator.generate();
+    auto map = mapGenerator.getMap();
+    mapGenerator.
     glutSwapBuffers();
 }
 

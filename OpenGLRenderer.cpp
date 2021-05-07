@@ -9,8 +9,8 @@ void OpenGLRenderer::init(int argc, char **argv) {
     glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_TEXTURE_2D);
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+//    glEnable(GL_TEXTURE_2D);
+//    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 }
 
 void OpenGLRenderer::setupWindow(int width, int height, const string &title) {
@@ -35,7 +35,7 @@ void OpenGLRenderer::reshapeCallback(int width, int height) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    gluOrtho2D(-1, 1, -1, 1);
+    gluOrtho2D(0, 1, 1, 0);
     glViewport(0, 0, width, height);
 
 }
