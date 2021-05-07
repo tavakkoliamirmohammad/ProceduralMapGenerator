@@ -12,6 +12,8 @@ protected:
     virtual void render(void (*callback)(void)) = 0;
 
     virtual void loop() = 0;
+
+    virtual void reshape() = 0;
 //    virtual void keyboardFunction(void (*callback)(unsigned char, int, int)) = 0;
 
     virtual void setupWindow(int width, int height, const string &title) = 0;

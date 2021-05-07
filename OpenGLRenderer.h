@@ -11,10 +11,14 @@ public:
 
     void render(void (*callback)()) override;
 
-    void loop() override;
+    void reshape() override;
 
     void setupWindow(int width, int height, const string &title) override;
 
+    void loop() override;
+
+private:
+    static void reshapeCallback(int width, int height);
 };
 
 #endif //MAP_GENERATION_OPENGLRENDERER_H

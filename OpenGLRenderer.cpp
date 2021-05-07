@@ -26,3 +26,16 @@ void OpenGLRenderer::loop() {
 void OpenGLRenderer::render(void (*callback)()) {
     glutDisplayFunc(callback);
 }
+
+void OpenGLRenderer::reshape() {
+    glutReshapeFunc(reshapeCallback);
+}
+
+void OpenGLRenderer::reshapeCallback(int width, int height) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    gluOrtho2D(-1, 1, -1, 1);
+    glViewport(0, 0, width, height);
+
+}
