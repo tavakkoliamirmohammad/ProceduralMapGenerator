@@ -7,7 +7,7 @@ class Executor : public Renderable {
 public:
     explicit Executor();
 
-    void run();
+    void update();
 
     void render() const override;
 

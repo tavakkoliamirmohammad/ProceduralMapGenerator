@@ -7,15 +7,14 @@ Executor::Executor() {
     vector<string> texturePaths = fileSystem.filesInDirectory(files[1]);
     vector<HexagonTexture *> loadedTexture;
     loadedTexture.reserve(texturePaths.size());
-    for (const auto& txPath: texturePaths) {
+    for (const auto &txPath: texturePaths) {
         loadedTexture.push_back(new HexagonTexture(txPath));
     }
     map_ = new Map(3, loadedTexture);
 }
 
 
-void Executor::run() {
-
+void Executor::update() {
 }
 
 void Executor::render() const {
