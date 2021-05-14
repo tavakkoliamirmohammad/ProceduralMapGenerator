@@ -18,17 +18,19 @@ Iter select_randomly(Iter start, Iter end) {
     return select_randomly(start, end, gen);
 }
 
-Map::Map(int n, vector<HexagonTexture *> loadedTexture) : n_(n) {
+Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
     int size = pow(2, n) + 1;
-    for (int i = 0; i < size; ++i) {
-        tileMap_.emplace_back(size);
+    row_ = size;
+    column_ = size;
+    for (int i = 0; i < row_; ++i) {
+        tileMap_.emplace_back(column_);
     }
     MapGenerator mapGenerator(size);
     mapGenerator.generate();
 //    TODO use map
     auto generateMap = mapGenerator.getMap();
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
+    for (int i = 0; i < row_; ++i) {
+        for (int j = 0; j < column_; ++j) {
             HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
             tileMap_[i].push_back(new HexagonTile(texture, size));
         }
@@ -36,6 +38,10 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) : n_(n) {
 }
 
 
-vector<vector<HexagonTile *>> Map::getTileMap() {
-    return tileMap_;
+void Map::render() const {
+    for (int i = 0; i < row_; ++i) {
+        for (int j = 0; j < column_; ++j) {
+            tileMap_[i][j]->render();
+        }
+    }
 }

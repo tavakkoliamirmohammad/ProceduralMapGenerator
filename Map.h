@@ -6,15 +6,15 @@
 
 using namespace std;
 
-class Map {
+class Map : public Renderable {
 public:
     Map(int n, vector<HexagonTexture *> loadedTexture);
 
-    vector<vector<HexagonTile *>> getTileMap();
+    void render() const override;
 
 private:
     vector<vector<HexagonTile *>> tileMap_;
-    int n_;
+    int row_, column_;
 
 };
 

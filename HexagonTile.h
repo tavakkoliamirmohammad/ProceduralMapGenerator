@@ -2,12 +2,13 @@
 #define MAP_GENERATION_HEXAGONTILE_H
 
 #include "HexagonTexture.h"
+#include "Renderable.h"
 
-class HexagonTile {
+class HexagonTile : public Renderable {
 public:
     HexagonTile(HexagonTexture *hexagonTexture, int size);
 
-    void render() const;
+    void render() const override;
 
 private:
     HexagonTexture *hexagonTexture_;
