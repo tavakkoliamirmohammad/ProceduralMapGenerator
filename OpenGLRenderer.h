@@ -2,6 +2,7 @@
 #define MAP_GENERATION_OPENGLRENDERER_H
 
 #include "Renderer.h"
+#include "Camera.h"
 
 class OpenGLRenderer : public Renderer {
 public:
@@ -19,6 +20,7 @@ public:
 
 private:
     static void reshapeCallback(int width, int height);
+    static Camera *camera_;
 };
 
 #endif //MAP_GENERATION_OPENGLRENDERER_H

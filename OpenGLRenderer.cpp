@@ -1,7 +1,10 @@
 #include "OpenGLRenderer.h"
 #include "GL/glut.h"
 
+Camera* OpenGLRenderer::camera_ = new Camera();
+
 OpenGLRenderer::OpenGLRenderer() = default;
+
 
 void OpenGLRenderer::init(int argc, char **argv) {
     glutInit(&argc, argv);
@@ -32,10 +35,11 @@ void OpenGLRenderer::reshape() {
 }
 
 void OpenGLRenderer::reshapeCallback(int width, int height) {
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    gluOrtho2D(0, 1, 1, 0);
+    gluOrtho2D(OpenGLRenderer::camera_->getX(), OpenGLRenderer::camera_->getX() + 20, OpenGLRenderer::camera_->getX(), OpenGLRenderer::camera_->getX() + 20);
     glViewport(0, 0, width, height);
 
 }
