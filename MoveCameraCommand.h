@@ -5,6 +5,8 @@
 #include "Camera.h"
 
 class MoveCameraCommand : public Command {
+public:
+
     MoveCameraCommand(Camera *camera, int x, int y);
 
     void execute() override;

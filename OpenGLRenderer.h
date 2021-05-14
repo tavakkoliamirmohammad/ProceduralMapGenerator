@@ -2,7 +2,6 @@
 #define MAP_GENERATION_OPENGLRENDERER_H
 
 #include "Renderer.h"
-#include "Camera.h"
 
 class OpenGLRenderer : public Renderer {
 public:
@@ -18,8 +17,15 @@ public:
 
     void loop() override;
 
+    void specialKeyboardFunction(void (*callback)(int, int, int)) override;
+
+    void reConfigureCamera() override;
+
+    void timerFunction(unsigned int time, void (*callback)(int), int value) override;
+
 private:
     static void reshapeCallback(int width, int height);
+
     static Camera *camera_;
 };
 

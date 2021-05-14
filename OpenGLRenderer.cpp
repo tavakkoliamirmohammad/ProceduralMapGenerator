@@ -1,7 +1,6 @@
 #include "OpenGLRenderer.h"
 #include "GL/glut.h"
 
-Camera *OpenGLRenderer::camera_ = new Camera();
 
 OpenGLRenderer::OpenGLRenderer() = default;
 
@@ -39,8 +38,26 @@ void OpenGLRenderer::reshapeCallback(int width, int height) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    gluOrtho2D(OpenGLRenderer::camera_->getX(), OpenGLRenderer::camera_->getX() + 20,
-               OpenGLRenderer::camera_->getY() + 20, OpenGLRenderer::camera_->getY());
+    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 10,
+               Renderer::camera_->getY() + 10, Renderer::camera_->getY());
     glViewport(0, 0, width, height);
 
+}
+
+void OpenGLRenderer::specialKeyboardFunction(void (* callback)( int, int, int ) ) {
+    glutSpecialFunc(callback);
+}
+
+void OpenGLRenderer::timerFunction(unsigned int time, void (*callback)(int), int value) {
+    glutTimerFunc(time, callback, value);
+}
+
+void OpenGLRenderer::reConfigureCamera() {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    auto w = glutGet(GLUT_WINDOW_WIDTH);
+    auto h = glutGet(GLUT_WINDOW_HEIGHT);
+    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 10,
+               Renderer::camera_->getY() + 10, Renderer::camera_->getY());
+    glViewport(0, 0, w, h);
 }

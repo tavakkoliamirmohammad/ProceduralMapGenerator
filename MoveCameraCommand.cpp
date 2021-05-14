@@ -7,9 +7,9 @@ MoveCameraCommand::MoveCameraCommand(Camera *camera, int x, int y) : camera_(cam
 void MoveCameraCommand::execute() {
     oldX_ = camera_->getX();
     oldY_ = camera_->getY();
-    camera_->move(newX_, newY_);
+    camera_->moveByOffset(newX_, newY_);
 }
 
 void MoveCameraCommand::undo() {
-    camera_->move(oldX_, oldY_);
+    camera_->moveByOffset(oldX_, oldY_);
 }
