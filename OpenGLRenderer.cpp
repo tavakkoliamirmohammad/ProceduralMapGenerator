@@ -38,8 +38,8 @@ void OpenGLRenderer::reshapeCallback(int width, int height) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 10,
-               Renderer::camera_->getY() + 10, Renderer::camera_->getY());
+    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 256,
+               Renderer::camera_->getY() + 256, Renderer::camera_->getY());
     glViewport(0, 0, width, height);
 
 }
@@ -57,7 +57,7 @@ void OpenGLRenderer::reConfigureCamera() {
     glLoadIdentity();
     auto w = glutGet(GLUT_WINDOW_WIDTH);
     auto h = glutGet(GLUT_WINDOW_HEIGHT);
-    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 10,
-               Renderer::camera_->getY() + 10, Renderer::camera_->getY());
+    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 256,
+               Renderer::camera_->getY() + 256, Renderer::camera_->getY());
     glViewport(0, 0, w, h);
 }

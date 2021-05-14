@@ -7,21 +7,13 @@ public:
 
     double **process();
 
-    void _on_start();
-
     void diamondStep(int, int);
 
     void squareStep(int, int);
 
     double dRand(double dMin, double dMax);
 
-    void renderMap();
-
 private:
-    double random_range;
-    double min_val;
-    double max_val;
-
     double **map;
     int size;
 

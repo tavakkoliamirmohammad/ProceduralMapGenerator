@@ -25,6 +25,7 @@ void keyboardSpecialFunc(int key, int x, int y) {
 }
 
 int main(int argc, char **argv) {
+    srand(time(nullptr));
     auto openGLRenderer = OpenGLRenderer();
     openGLRenderer.init(argc, argv);
     openGLRenderer.setupWindow(800, 600, "Test");

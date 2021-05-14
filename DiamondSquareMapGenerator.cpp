@@ -1,8 +1,5 @@
 #include <cstdlib>
-#include <ctime>
-#include "GL/glut.h"
 #include "DiamondSquareMapGenerator.h"
-#include "iostream"
 
 using namespace std;
 
@@ -13,9 +10,8 @@ DiamondSquareMapGenerator::DiamondSquareMapGenerator(double **array, int s) {
 }
 
 double **DiamondSquareMapGenerator::process() {
-    _on_start();
+    map[0][0] = map[0][size - 1] = map[size - 1][0] = map[size - 1][size - 1] = 100;
 
-    //Processing...
     for (int sideLength = size - 1; sideLength >= 2; sideLength /= 2, range /= 2) {
         int halfSide = sideLength / 2;
 
@@ -53,45 +49,9 @@ void DiamondSquareMapGenerator::squareStep(int sideLength, int halfSide) {
     }
 }
 
-void DiamondSquareMapGenerator::_on_start() {
-    // Defining the corners values :
-    map[0][0] = map[0][size - 1] = map[size - 1][0] = map[size - 1][size - 1] = 100;
-    // Initializing srand for random values :
-    srand(time(nullptr));
-}
 
 
 double DiamondSquareMapGenerator::dRand(double dMin, double dMax) {
     double d = (double) rand() / RAND_MAX;
     return dMin + d * (dMax - dMin);
-}
-
-void DiamondSquareMapGenerator::renderMap() {
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    double maxNumber = -1;
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            maxNumber = max(maxNumber, map[i][j]);
-        }
-    }
-
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            glPushMatrix();
-            glTranslatef(j / float(size), i / float(size), 0);
-            glBegin(GL_POLYGON);
-
-            float color = abs(map[i][j] / 255.0);
-            glColor3f(color, color, color);
-            glVertex3f(0, 0, 0);
-            glVertex3f(1.0 / size, 0, 0);
-            glVertex3f(1.0 / size, 1.0 / size, 0);
-            glVertex3f(0, 1.0 / size, 0);
-            glEnd();
-            glPopMatrix();
-        }
-        cout << endl;
-    }
-
 }
