@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     srand(time(nullptr));
     auto openGLRenderer = OpenGLRenderer();
     openGLRenderer.init(argc, argv);
-    openGLRenderer.setupWindow(800, 600, "Test");
+    openGLRenderer.setupWindow(800, 600, "Map Generation");
     openGLRenderer.reshape();
     executor = new Executor(&openGLRenderer);
     openGLRenderer.render(render);

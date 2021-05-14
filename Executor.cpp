@@ -16,7 +16,7 @@ Executor::Executor(Renderer *renderer) : renderer_(renderer) {
     vector<HexagonTexture *> sandsBuilding = getTextureFromDirectory(
             fileSystem.filesInDirectory(basePath + "/Buildings/Sand"));
     vector<HexagonTexture *> stone = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Stone"));
-    map_ = new Map(8, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone);
+    map_ = new Map(6, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone);
 }
 
 
