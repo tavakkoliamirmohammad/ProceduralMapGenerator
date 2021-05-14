@@ -15,7 +15,9 @@ public:
 
     void handleInput(int key, int x, int y);
 
+
 private:
+    static vector<HexagonTexture *> getTextureFromDirectory(const vector<string> &folder);
 
     Map *map_;
     CommandStream commandStream_;

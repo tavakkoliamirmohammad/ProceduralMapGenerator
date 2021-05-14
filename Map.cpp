@@ -18,7 +18,8 @@ Iter select_randomly(Iter start, Iter end) {
     return select_randomly(start, end, gen);
 }
 
-Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
+Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> grass,
+         vector<HexagonTexture *> mars, vector<HexagonTexture *> sand, vector<HexagonTexture *> stone) {
     int size = pow(2, n) + 1;
     row_ = size;
     column_ = size;
@@ -27,11 +28,25 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
     }
     MapGenerator mapGenerator(size);
     mapGenerator.generate();
-//    TODO use map
     auto generateMap = mapGenerator.getMap();
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
-            HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
+            HexagonTexture *texture;
+            if (generateMap[i][j] < 0.2) {
+                texture = *select_randomly(dirt.begin(), dirt.end());
+
+            } else if (generateMap[i][j] < 0.4) {
+                texture = *select_randomly(grass.begin(), grass.end());
+
+            } else if (generateMap[i][j] < 0.6) {
+                texture = *select_randomly(mars.begin(), mars.end());
+
+            } else if (generateMap[i][j] < 0.8) {
+                texture = *select_randomly(sand.begin(), sand.end());
+
+            } else {
+                texture = *select_randomly(stone.begin(), stone.end());
+            }
             tileMap_[i][j] = new HexagonTile(texture, size);
         }
     }

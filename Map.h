@@ -8,7 +8,8 @@ using namespace std;
 
 class Map : public Renderable {
 public:
-    Map(int n, vector<HexagonTexture *> loadedTexture);
+    Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> grass, vector<HexagonTexture *> mars,
+        vector<HexagonTexture *> sand, vector<HexagonTexture *> stone);
 
     void render() const override;
 
