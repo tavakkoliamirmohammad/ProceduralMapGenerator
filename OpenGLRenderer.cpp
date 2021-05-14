@@ -18,6 +18,7 @@ void OpenGLRenderer::init(int argc, char **argv) {
 void OpenGLRenderer::setupWindow(int width, int height, const string &title) {
     glutInitWindowSize(width, height);
     glutCreateWindow(title.c_str());
+    glutSetKeyRepeat(GLUT_KEY_REPEAT_ON);
     glClearColor(0, 0, 0, 0);
 }
 
@@ -57,7 +58,7 @@ void OpenGLRenderer::reConfigureCamera() {
     glLoadIdentity();
     auto w = glutGet(GLUT_WINDOW_WIDTH);
     auto h = glutGet(GLUT_WINDOW_HEIGHT);
-    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 256,
-               Renderer::camera_->getY() + 256, Renderer::camera_->getY());
+    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 20,
+               Renderer::camera_->getY() + 20, Renderer::camera_->getY());
     glViewport(0, 0, w, h);
 }

@@ -4,13 +4,19 @@
 Executor::Executor(Renderer *renderer) : renderer_(renderer) {
     inputHandler_ = new InputHandler(renderer_);
     FileSystem fileSystem = FileSystem::instance();
-    string basePath = "/home/amir/projects/gameDesign/map_generation/Tiles/Terrain";
-    vector<HexagonTexture *> dirt = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Dirt"));
-    vector<HexagonTexture *> grass = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Grass"));
-    vector<HexagonTexture *> mars = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Mars"));
-    vector<HexagonTexture *> sand = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Sand"));
-    vector<HexagonTexture *> stone = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Stone"));
-    map_ = new Map(8, dirt, grass, mars, sand, stone);
+    string basePath = "/home/amir/projects/gameDesign/map_generation";
+    vector<HexagonTexture *> dirt = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Dirt"));
+    vector<HexagonTexture *> dirtBuilding = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Buildings/Dirt"));
+    vector<HexagonTexture *> grass = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Grass"));
+    vector<HexagonTexture *> grassBuilding = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Buildings/Grass"));
+    vector<HexagonTexture *> mars = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Mars"));
+    vector<HexagonTexture *> sand = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Sand"));
+    vector<HexagonTexture *> sandsBuilding = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Buildings/Sand"));
+    vector<HexagonTexture *> stone = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Stone"));
+    map_ = new Map(8, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone);
 }
 
 

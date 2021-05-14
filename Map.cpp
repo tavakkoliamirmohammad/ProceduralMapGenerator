@@ -18,8 +18,10 @@ Iter select_randomly(Iter start, Iter end) {
     return select_randomly(start, end, gen);
 }
 
-Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> grass,
-         vector<HexagonTexture *> mars, vector<HexagonTexture *> sand, vector<HexagonTexture *> stone) {
+Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> dirtBuilding, vector<HexagonTexture *> grass,
+         vector<HexagonTexture *> grassBuilding,
+         vector<HexagonTexture *> mars, vector<HexagonTexture *> sand, vector<HexagonTexture *> sandBuilding,
+         vector<HexagonTexture *> stone) {
     int size = pow(2, n) + 1;
     row_ = size;
     column_ = size;
@@ -32,18 +34,22 @@ Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> grass,
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
             HexagonTexture *texture;
-            if (generateMap[i][j] / 255 < 0.2) {
+            if (generateMap[i][j] / 255 < 0.1) {
                 texture = *select_randomly(dirt.begin(), dirt.end());
 
+            } else if (generateMap[i][j] / 255 < 0.2) {
+                texture = *select_randomly(dirtBuilding.begin(), dirtBuilding.end());
+
+            } else if (generateMap[i][j] / 255 < 0.3) {
+                texture = *select_randomly(grass.begin(), grass.end());
             } else if (generateMap[i][j] / 255 < 0.4) {
                 texture = *select_randomly(grass.begin(), grass.end());
-
             } else if (generateMap[i][j] / 255 < 0.6) {
                 texture = *select_randomly(mars.begin(), mars.end());
-
-            } else if (generateMap[i][j] / 255 < 0.8) {
+            } else if (generateMap[i][j] / 255 < 0.7) {
                 texture = *select_randomly(sand.begin(), sand.end());
-
+            } else if (generateMap[i][j] / 255 < 0.8) {
+                texture = *select_randomly(sandBuilding.begin(), sandBuilding.end());
             } else {
                 texture = *select_randomly(stone.begin(), stone.end());
             }
