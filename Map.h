@@ -8,13 +8,13 @@ using namespace std;
 
 class Map {
 public:
-    Map(int row, int column);
+    Map(int n, vector<HexagonTexture *> loadedTexture);
 
     vector<vector<HexagonTile *>> getTileMap();
 
 private:
     vector<vector<HexagonTile *>> tileMap_;
-    int row_, column_;
+    int n_;
 
 };
 
