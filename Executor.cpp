@@ -10,7 +10,7 @@ Executor::Executor() {
     for (const auto &txPath: texturePaths) {
         loadedTexture.push_back(new HexagonTexture(txPath));
     }
-    map_ = new Map(3, loadedTexture);
+    map_ = new Map(5, loadedTexture);
 }
 
 

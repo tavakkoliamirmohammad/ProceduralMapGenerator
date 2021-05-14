@@ -5,8 +5,8 @@ HexagonTile::HexagonTile(HexagonTexture *hexagonTexture, int size) : hexagonText
 }
 
 void HexagonTile::render() const {
-    auto tx_w = 1.0 / size_;
-    auto tx_h = 1.0 / size_;
+    auto tx_w = 1.0 ;
+    auto tx_h = 1.0;
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_TEXTURE_2D);

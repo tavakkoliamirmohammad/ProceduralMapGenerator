@@ -42,14 +42,14 @@ void Map::render() const {
     for (int i = 0; i < row_; ++i) {
         glPushMatrix();
         if (i % 2 == 1) {
-            glTranslatef((-1 / float(row_) / 2), 0, 0);
-            glTranslatef(0, (-i / float(column_) / 4), 0);
+            glTranslatef(-1.0 / 2, 0, 0);
+            glTranslatef(0, -i / 4.0, 0);
         } else if (i != 0) {
-            glTranslatef(0, (-i / float(column_) / 4), 0);
+            glTranslatef(0, -i / 4.0, 0);
         }
         for (int j = 0; j < column_; ++j) {
             glPushMatrix();
-            glTranslatef(j / float(row_), i / float(column_), 0);
+            glTranslatef(j, i, 0);
             tileMap_[i][j]->render();
             glPopMatrix();
         }
