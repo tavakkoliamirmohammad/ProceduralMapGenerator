@@ -31,8 +31,8 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
     auto generateMap = mapGenerator.getMap();
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
-//            HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
-//            tileMap_[i].push_back(new HexagonTile(texture, size));
+            HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
+            tileMap_[i][j] = new HexagonTile(texture, size);
         }
     }
 }
@@ -40,8 +40,19 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
 
 void Map::render() const {
     for (int i = 0; i < row_; ++i) {
-        for (int j = 0; j < column_; ++j) {
-//            tileMap_[i][j]->render();
+        glPushMatrix();
+        if (i % 2 == 1) {
+            glTranslatef((-1 / float(row_) / 2), 0, 0);
+            glTranslatef(0, (-i / float(column_) / 4), 0);
+        } else if (i != 0) {
+            glTranslatef(0, (-i / float(column_) / 4), 0);
         }
+        for (int j = 0; j < column_; ++j) {
+            glPushMatrix();
+            glTranslatef(j / float(row_), i / float(column_), 0);
+            tileMap_[i][j]->render();
+            glPopMatrix();
+        }
+        glPopMatrix();
     }
 }
