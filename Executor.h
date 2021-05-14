@@ -3,10 +3,13 @@
 
 #include "Map.h"
 
-class Executor {
-    explicit Executor(Map *map);
+class Executor : public Renderable {
+public:
+    explicit Executor();
 
     void run();
+
+    void render() const override;
 
 private:
 

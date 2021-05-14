@@ -31,8 +31,8 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
     auto generateMap = mapGenerator.getMap();
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
-            HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
-            tileMap_[i].push_back(new HexagonTile(texture, size));
+//            HexagonTexture *texture = *select_randomly(loadedTexture.begin(), loadedTexture.end());
+//            tileMap_[i].push_back(new HexagonTile(texture, size));
         }
     }
 }
@@ -41,7 +41,7 @@ Map::Map(int n, vector<HexagonTexture *> loadedTexture) {
 void Map::render() const {
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
-            tileMap_[i][j]->render();
+//            tileMap_[i][j]->render();
         }
     }
 }
