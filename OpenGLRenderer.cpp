@@ -1,6 +1,6 @@
+#include "GL/glew.h"
 #include "OpenGLRenderer.h"
 #include "GL/glut.h"
-
 
 OpenGLRenderer::OpenGLRenderer() = default;
 
@@ -18,6 +18,7 @@ void OpenGLRenderer::init(int argc, char **argv) {
 void OpenGLRenderer::setupWindow(int width, int height, const string &title) {
     glutInitWindowSize(width, height);
     glutCreateWindow(title.c_str());
+    glewInit();
     glutSetKeyRepeat(GLUT_KEY_REPEAT_ON);
     glClearColor(0, 0, 0, 0);
 }

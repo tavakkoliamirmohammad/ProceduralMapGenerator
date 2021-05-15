@@ -5,20 +5,21 @@
 #include "Renderable.h"
 #include "Selectable.h"
 #include "HexagonTileState.h"
+#include "Model.h"
 
-class HexagonTile : public Renderable, public Selectable {
+class HexagonTile : public Selectable, public Model {
 public:
     HexagonTile(HexagonTexture *hexagonTexture, int size, int name);
 
-    void render() const override;
-
     void onSelect(bool isSelected) override;
+
+    void render() const override;
 
     void onNotify(DataCarrier *dataCarrier, Event event) override;
 
 private:
     HexagonTexture *hexagonTexture_;
-    HexagonTileState* hexagonTileState_;
+    HexagonTileState *hexagonTileState_;
     int size_;
 };
 
