@@ -4,6 +4,7 @@
 #include "HexagonTexture.h"
 #include "Renderable.h"
 #include "Selectable.h"
+#include "HexagonTileState.h"
 
 class HexagonTile : public Renderable, public Selectable {
 public:
@@ -17,6 +18,7 @@ public:
 
 private:
     HexagonTexture *hexagonTexture_;
+    HexagonTileState* hexagonTileState_;
     int size_;
 };
 
