@@ -43,7 +43,7 @@ Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> dirtBuil
             } else if (generateMap[i][j] / 255 < 0.3) {
                 texture = *select_randomly(grass.begin(), grass.end());
             } else if (generateMap[i][j] / 255 < 0.4) {
-                texture = *select_randomly(grass.begin(), grass.end());
+                texture = *select_randomly(grassBuilding.begin(), grassBuilding.end());
             } else if (generateMap[i][j] / 255 < 0.6) {
                 texture = *select_randomly(mars.begin(), mars.end());
             } else if (generateMap[i][j] / 255 < 0.7) {

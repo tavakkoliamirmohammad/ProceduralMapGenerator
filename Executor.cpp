@@ -23,7 +23,7 @@ Executor::Executor(Renderer *renderer) : renderer_(renderer) {
     vector<HexagonTexture *> stone = getTextureFromDirectory(
             fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Stone"));
     selectionEngine_ = SelectionEngine();
-    map_ = new Map(3, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone, &selectionEngine_);
+    map_ = new Map(5, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone, &selectionEngine_);
     inputHandler_ = new InputHandler(renderer_, renderer_->getWindowWidth(), renderer_->getWindowHeight());
 
 }
