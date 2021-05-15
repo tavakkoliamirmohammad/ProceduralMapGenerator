@@ -6,14 +6,13 @@
 
 class InputHandler {
 public:
-    explicit InputHandler(Renderer *renderer, int row, int height);
+    InputHandler(Renderer *renderer, int size);
 
     Command *handleInput(int key, int x, int y) const;
 
 private:
     Renderer *renderer_;
-    int row_;
-    int height_;
+    int size_;
 };
 
 #endif //MAP_GENERATION_INPUTHANDLER_H

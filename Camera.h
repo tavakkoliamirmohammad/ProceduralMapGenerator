@@ -5,7 +5,7 @@ class Camera {
 public:
     Camera();
 
-    void moveByOffset(int x, int y, int row, int height);
+    void moveByOffset(int x, int y, int size);
 
     int getX() const;
 
