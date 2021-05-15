@@ -1,10 +1,10 @@
 #include "Camera.h"
 #include <iostream>
+#include "GL/glut.h"
 
 using namespace std;
 
-Camera::Camera() {
-}
+Camera::Camera() = default;
 
 
 int Camera::getX() const {
@@ -21,4 +21,10 @@ void Camera::moveByOffset(int x, int y, int row, int height) {
     cout << x_ + x << " " << row << endl;
     x_ += x;
     y_ += y;
+}
+
+void Camera::configure(int w, int h) const {
+    gluOrtho2D(x_, x_ + 16, y_ + 16, y_);
+    glViewport(0, 0, w, h);
+
 }

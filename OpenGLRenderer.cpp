@@ -58,9 +58,7 @@ void OpenGLRenderer::reConfigureCamera() {
     glLoadIdentity();
     auto w = glutGet(GLUT_WINDOW_WIDTH);
     auto h = glutGet(GLUT_WINDOW_HEIGHT);
-    gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 16,
-               Renderer::camera_->getY() + 16, Renderer::camera_->getY());
-    glViewport(0, 0, w, h);
+    Renderer::camera_->configure(w, h);
 }
 
 int OpenGLRenderer::getWindowHeight() {
@@ -69,4 +67,8 @@ int OpenGLRenderer::getWindowHeight() {
 
 int OpenGLRenderer::getWindowWidth() {
     return glutGet(GLUT_WINDOW_WIDTH);
+}
+
+void OpenGLRenderer::selectCallback(void (*callback)(int, int, int, int)) {
+    glutMouseFunc(callback);
 }

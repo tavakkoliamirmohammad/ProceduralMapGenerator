@@ -3,6 +3,7 @@
 #include <cmath>
 #include  <random>
 #include  <iterator>
+#include "SelectionEngine.h"
 
 template<typename Iter, typename RandomGenerator>
 Iter select_randomly(Iter start, Iter end, RandomGenerator &g) {
@@ -21,7 +22,7 @@ Iter select_randomly(Iter start, Iter end) {
 Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> dirtBuilding, vector<HexagonTexture *> grass,
          vector<HexagonTexture *> grassBuilding,
          vector<HexagonTexture *> mars, vector<HexagonTexture *> sand, vector<HexagonTexture *> sandBuilding,
-         vector<HexagonTexture *> stone) {
+         vector<HexagonTexture *> stone, SelectionEngine *selectionEngine) {
     int size = pow(2, n) + 1;
     row_ = size;
     column_ = size;
@@ -31,15 +32,14 @@ Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> dirtBuil
     MapGenerator mapGenerator(size);
     mapGenerator.generate();
     auto generateMap = mapGenerator.getMap();
+    int name = 0;
     for (int i = 0; i < row_; ++i) {
         for (int j = 0; j < column_; ++j) {
             HexagonTexture *texture;
             if (generateMap[i][j] / 255 < 0.1) {
                 texture = *select_randomly(dirt.begin(), dirt.end());
-
             } else if (generateMap[i][j] / 255 < 0.2) {
                 texture = *select_randomly(dirtBuilding.begin(), dirtBuilding.end());
-
             } else if (generateMap[i][j] / 255 < 0.3) {
                 texture = *select_randomly(grass.begin(), grass.end());
             } else if (generateMap[i][j] / 255 < 0.4) {
@@ -53,7 +53,8 @@ Map::Map(int n, vector<HexagonTexture *> dirt, vector<HexagonTexture *> dirtBuil
             } else {
                 texture = *select_randomly(stone.begin(), stone.end());
             }
-            tileMap_[i][j] = new HexagonTile(texture, size);
+            tileMap_[i][j] = new HexagonTile(texture, size, name++);
+            selectionEngine->addObserver(tileMap_[i][j]);
         }
     }
 }

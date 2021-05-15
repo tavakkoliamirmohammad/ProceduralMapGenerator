@@ -3,12 +3,17 @@
 
 #include "HexagonTexture.h"
 #include "Renderable.h"
+#include "Selectable.h"
 
-class HexagonTile : public Renderable {
+class HexagonTile : public Renderable, public Selectable {
 public:
-    HexagonTile(HexagonTexture *hexagonTexture, int size);
+    HexagonTile(HexagonTexture *hexagonTexture, int size, int name);
 
     void render() const override;
+
+    void onSelect(bool isSelected) override;
+
+    void onNotify(DataCarrier *dataCarrier, Event event) override;
 
 private:
     HexagonTexture *hexagonTexture_;

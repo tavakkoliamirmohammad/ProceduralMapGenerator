@@ -1,11 +1,14 @@
 #include "HexagonTile.h"
+#include "SelectTileDataCarrier.h"
 
-HexagonTile::HexagonTile(HexagonTexture *hexagonTexture, int size) : hexagonTexture_(hexagonTexture), size_(size) {
+HexagonTile::HexagonTile(HexagonTexture *hexagonTexture, int size, int name) : hexagonTexture_(hexagonTexture),
+                                                                               size_(size),
+                                                                               Selectable(name) {
 
 }
 
 void HexagonTile::render() const {
-    auto tx_w = 1.0 ;
+    auto tx_w = 1.0;
     auto tx_h = 1.0;
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -29,4 +32,15 @@ void HexagonTile::render() const {
 
 //    glBindTexture(GL_TEXTURE_2D, NULL);
 
+}
+
+void HexagonTile::onSelect(bool isSelected) {
+
+}
+
+void HexagonTile::onNotify(DataCarrier *dataCarrier, Event event) {
+    if (event == Event::SelectTile &&
+        dataCarrier->getDataCarrierType() == DataCarrierType::SelectTileDataCarrier) {
+        processSelect(dynamic_cast<SelectTileDataCarrier *>(dataCarrier)->getName());
+    }
 }

@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "CommandStream.h"
 #include "InputHandler.h"
+#include "SelectionEngine.h"
 
 class Executor : public Renderable {
 public:
@@ -13,12 +14,18 @@ public:
 
     void render() const override;
 
+    void pickItems(int button, int state, int x, int y);
+
+    void processHits(GLint hits, GLuint *buffer);
+
+
     void handleInput(int key, int x, int y);
 
 
 private:
     static vector<HexagonTexture *> getTextureFromDirectory(const vector<string> &folder);
 
+    SelectionEngine selectionEngine_;
     Map *map_;
     CommandStream commandStream_;
     InputHandler *inputHandler_;

@@ -11,6 +11,8 @@ public:
 
     int getY() const;
 
+    void configure(int w, int h) const;
+
 private:
     int x_ = 0, y_ = 0;
 };

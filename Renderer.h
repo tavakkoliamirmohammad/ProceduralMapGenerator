@@ -32,6 +32,8 @@ protected:
 
     virtual void timerFunction(unsigned int time, void (*callback)(int), int value) = 0;
 
+    virtual void selectCallback(void (*callback)(int, int, int, int)) = 0;
+
 
     static Camera *camera_;
 

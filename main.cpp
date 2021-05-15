@@ -14,10 +14,12 @@ void timer(int value) {
 
 void render() {
     glClear(GL_COLOR_BUFFER_BIT);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
     executor->render();
     glutSwapBuffers();
+}
+
+void selectCallback(int button, int state, int x, int y) {
+    executor->pickItems(button, state, x, y);
 }
 
 void keyboardSpecialFunc(int key, int x, int y) {
@@ -34,5 +36,6 @@ int main(int argc, char **argv) {
     openGLRenderer.render(render);
     openGLRenderer.specialKeyboardFunction(keyboardSpecialFunc);
     openGLRenderer.timerFunction(25, timer, 0);
+    openGLRenderer.selectCallback(selectCallback);
     openGLRenderer.loop();
 }

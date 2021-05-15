@@ -27,6 +27,8 @@ public:
 
     int getWindowWidth() override;
 
+    void selectCallback(void (*callback)(int, int, int, int)) override;
+
 private:
     static void reshapeCallback(int width, int height);
 
