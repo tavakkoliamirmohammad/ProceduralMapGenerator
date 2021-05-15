@@ -14,6 +14,7 @@ void HexagonTile::render() const {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, hexagonTexture_->getTextureId());
+    glLoadName(selectName_);
 
     glBegin(GL_POLYGON);
     glTexCoord2f(0, 0);

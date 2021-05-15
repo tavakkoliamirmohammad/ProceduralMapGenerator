@@ -83,7 +83,7 @@ void Executor::pickItems(int button, int state, int x, int y) {
     Renderer::getCamera()->configure(w, h);
 
     render();
-
+    glLoadName(-1);
     glPopMatrix();
     glutSwapBuffers();
 
