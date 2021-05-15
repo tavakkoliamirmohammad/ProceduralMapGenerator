@@ -23,6 +23,10 @@ public:
 
     void timerFunction(unsigned int time, void (*callback)(int), int value) override;
 
+    int getWindowHeight() override;
+
+    int getWindowWidth() override;
+
 private:
     static void reshapeCallback(int width, int height);
 

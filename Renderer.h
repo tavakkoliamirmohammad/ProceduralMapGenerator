@@ -13,6 +13,10 @@ public:
 
     virtual void reConfigureCamera() = 0;
 
+    virtual int getWindowWidth() = 0;
+
+    virtual int getWindowHeight() = 0;
+
 protected:
     virtual void init(int argc, char **argv) = 0;
 

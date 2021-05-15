@@ -15,6 +15,10 @@ public:
 
     void render() const override;
 
+    int getRow();
+
+    int getColumn();
+
 private:
     vector<vector<HexagonTile *>> tileMap_;
     int row_, column_;

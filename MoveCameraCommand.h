@@ -7,7 +7,7 @@
 class MoveCameraCommand : public Command {
 public:
 
-    MoveCameraCommand(Camera *camera, int x, int y);
+    MoveCameraCommand(Camera *camera, int x, int y, int row, int column);
 
     void execute() override;
 
@@ -16,6 +16,7 @@ public:
 private:
     Camera *camera_;
     int newX_, newY_;
+    int row_, column_;
     int oldX_, oldY_;
 };
 

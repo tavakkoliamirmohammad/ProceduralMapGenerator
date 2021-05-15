@@ -45,7 +45,7 @@ void OpenGLRenderer::reshapeCallback(int width, int height) {
 
 }
 
-void OpenGLRenderer::specialKeyboardFunction(void (* callback)( int, int, int ) ) {
+void OpenGLRenderer::specialKeyboardFunction(void (*callback)(int, int, int)) {
     glutSpecialFunc(callback);
 }
 
@@ -61,4 +61,12 @@ void OpenGLRenderer::reConfigureCamera() {
     gluOrtho2D(Renderer::camera_->getX(), Renderer::camera_->getX() + 16,
                Renderer::camera_->getY() + 16, Renderer::camera_->getY());
     glViewport(0, 0, w, h);
+}
+
+int OpenGLRenderer::getWindowHeight() {
+    return glutGet(GLUT_WINDOW_HEIGHT);
+}
+
+int OpenGLRenderer::getWindowWidth() {
+    return glutGet(GLUT_WINDOW_WIDTH);
 }

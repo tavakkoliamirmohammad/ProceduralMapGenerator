@@ -2,21 +2,27 @@
 #include "FileSystem.h"
 
 Executor::Executor(Renderer *renderer) : renderer_(renderer) {
-    inputHandler_ = new InputHandler(renderer_);
     FileSystem fileSystem = FileSystem::instance();
     string basePath = "/home/amir/projects/gameDesign/map_generation";
-    vector<HexagonTexture *> dirt = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Dirt"));
+    vector<HexagonTexture *> dirt = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Dirt"));
     vector<HexagonTexture *> dirtBuilding = getTextureFromDirectory(
             fileSystem.filesInDirectory(basePath + "/Buildings/Dirt"));
-    vector<HexagonTexture *> grass = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Grass"));
+    vector<HexagonTexture *> grass = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Grass"));
     vector<HexagonTexture *> grassBuilding = getTextureFromDirectory(
             fileSystem.filesInDirectory(basePath + "/Buildings/Grass"));
-    vector<HexagonTexture *> mars = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Mars"));
-    vector<HexagonTexture *> sand = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Sand"));
+    vector<HexagonTexture *> mars = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Mars"));
+    vector<HexagonTexture *> sand = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Sand"));
     vector<HexagonTexture *> sandsBuilding = getTextureFromDirectory(
             fileSystem.filesInDirectory(basePath + "/Buildings/Sand"));
-    vector<HexagonTexture *> stone = getTextureFromDirectory(fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Stone"));
-    map_ = new Map(6, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone);
+    vector<HexagonTexture *> stone = getTextureFromDirectory(
+            fileSystem.filesInDirectory(basePath + "/Tiles/Terrain/Stone"));
+    map_ = new Map(3, dirt, dirtBuilding, grass, grassBuilding, mars, sand, sandsBuilding, stone);
+    inputHandler_ = new InputHandler(renderer_, renderer_->getWindowWidth(), renderer_->getWindowHeight());
+
 }
 
 

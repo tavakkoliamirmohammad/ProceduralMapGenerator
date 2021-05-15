@@ -3,7 +3,9 @@
 
 class Camera {
 public:
-    void moveByOffset(int x, int y);
+    Camera();
+
+    void moveByOffset(int x, int y, int row, int height);
 
     int getX() const;
 

@@ -77,3 +77,11 @@ void Map::render() const {
         glPopMatrix();
     }
 }
+
+int Map::getRow() {
+    return row_;
+}
+
+int Map::getColumn() {
+    return column_;
+}
