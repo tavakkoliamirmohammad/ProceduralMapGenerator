@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     srand(time(nullptr));
     auto openGLRenderer = OpenGLRenderer();
     openGLRenderer.init(argc, argv);
-    openGLRenderer.setupWindow(1200, 1200, "Map Generation");
+    openGLRenderer.setupWindow(800, 800, "Map Generation");
     openGLRenderer.reshape();
     executor = new Executor(&openGLRenderer);
     openGLRenderer.render(render);

@@ -23,6 +23,6 @@ void Camera::moveByOffset(int x, int y, int size) {
 }
 
 void Camera::configure(int w, int h) const {
-    gluOrtho2D(x_, x_ + 32, y_ + 32, y_);
+    gluOrtho2D(x_, x_ + 16, y_ + 16, y_);
     glViewport(0, 0, w, h);
 }
